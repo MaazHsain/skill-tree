@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__) # Needed so that Flask knows where to look for resources such as templates and static files
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///roles.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///teckStack.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
