@@ -30,3 +30,4 @@ assets/
 *.md
 
 src/components/ui
+dummy/
