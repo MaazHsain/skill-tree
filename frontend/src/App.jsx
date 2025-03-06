@@ -1,11 +1,14 @@
 import { Text, Container, Stack } from "@chakra-ui/react";
 import Navbar from "./components/Navbar";
 import TechGrid from "./components/TechGrid";
+import { useState } from "react";
 
+export const BASE_URL = "http://127.0.0.1:5000";
 function App() {
+  const [techStack, addTech] = useState([]);
   return (
     <Stack minH={"100vh"} fontFamily={"body"}>
-      <Navbar />
+      <Navbar addTech={addTech} />
       <Container maxW={"1200px"} my={4}>
         <Text
           fontSize={{ base: "3xl", md: "50" }}
@@ -26,7 +29,7 @@ function App() {
           </Text>
           💻🚀
         </Text>
-        <TechGrid />
+        <TechGrid techStack={techStack} addTech={addTech} />
       </Container>
     </Stack>
   );

@@ -21,7 +21,7 @@ const TechCard = ({ tech }) => {
       <Card.Body>
         <Flex gap={4}>
           <Flex flex={"1"} gap={"4"} alignItems={"center"}>
-            <Avatar src="https://avatar.iran.liara.run/username?username=java" />
+            <Avatar src={tech.imgURL} />
             <Box>
               <Card.Title>{tech.name}</Card.Title>
               <Card.Description fontWeight={"medium"}>

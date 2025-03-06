@@ -7,7 +7,7 @@ from models import Tech
 def get_techStack():
     techStack = Tech.query.all() # will return tech stack in the form of python objects thats y we need the conversion
     json_techStack = [tech.to_json() for tech in techStack]
-    return jsonify({"Tech Stack": json_techStack}), 200
+    return jsonify(json_techStack), 200
 
 # Add new tech
 @app.route("/techStack", methods=["POST"])
@@ -58,7 +58,7 @@ def add_tech():
         db.session.add(new_tech)
         db.session.commit()
 
-        return jsonify({"message": "Tech added!", "Tech Id": new_tech.id, "Name": new_tech.name}), 201 # 201 means resource created
+        return jsonify(new_tech.to_json()), 201 # 201 means resource created
     except Exception as e:
         db.session.rollback()
         return jsonify({"message": str(e)}), 500

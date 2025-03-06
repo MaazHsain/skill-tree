@@ -5,7 +5,7 @@ import { LuSun } from "react-icons/lu";
 import React from "react";
 import CreateTechModal from "./CreateTechModal";
 
-const Navbar = () => {
+const Navbar = ({ addTech }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Container maxW={"900px"}>
@@ -42,7 +42,7 @@ const Navbar = () => {
             >
               🤖 Add Tech
             </Text>
-            <CreateTechModal />
+            <CreateTechModal addTech={addTech} />
           </Flex>
         </Flex>
       </Box>
