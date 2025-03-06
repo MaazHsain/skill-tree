@@ -4,7 +4,7 @@ import TechGrid from "./components/TechGrid";
 
 function App() {
   return (
-    <Stack minH={"100vh"} fontFamily={"mono"}>
+    <Stack minH={"100vh"} fontFamily={"body"}>
       <Navbar />
       <Container maxW={"1200px"} my={4}>
         <Text
