@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Flex, Grid, Spinner, Text } from "@chakra-ui/react";
 // import { TECHSTACK } from "../dummy/dummy";
 import TechCard from "./TechCard";
+import { BASE_URL } from "../App";
 
 const TechGrid = ({ techStack, addTech }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -9,7 +10,7 @@ const TechGrid = ({ techStack, addTech }) => {
   useEffect(() => {
     const getTechStack = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:5000/techStack");
+        const res = await fetch(BASE_URL + "/techStack");
         const data = await res.json();
 
         if (!res.ok) {
@@ -24,7 +25,7 @@ const TechGrid = ({ techStack, addTech }) => {
     };
     getTechStack();
   }, [addTech]);
-  console.log(techStack);
+  // console.log(techStack);
   return (
     <>
       <Grid
@@ -36,7 +37,7 @@ const TechGrid = ({ techStack, addTech }) => {
         gap={4}
       >
         {techStack.map((tech) => (
-          <TechCard key={tech.id} tech={tech} />
+          <TechCard key={tech.id} tech={tech} addTech={addTech} />
         ))}
       </Grid>
 

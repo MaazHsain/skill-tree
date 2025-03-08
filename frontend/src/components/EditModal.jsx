@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Flex,
@@ -21,12 +21,12 @@ import {
   DialogContent,
   DialogFooter,
   DialogHeader,
-  DialogRoot,
   DialogTitle,
   DialogTrigger,
+  DialogRoot,
 } from "../components/ui/dialog";
 import { Radio, RadioGroup } from "../components/ui/radio";
-import { FormControl, FormLabel } from "@chakra-ui/form-control";
+import { BASE_URL } from "../App";
 
 const CATEGORIES = [
   "Language",
@@ -44,15 +44,57 @@ const CATEGORIES = [
   "Containerization",
 ];
 
-const EditModal = () => {
+const EditModal = ({ addTech, tech }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isLoading, setIsLoading] = useState(false);
+  const [inputs, setInputs] = useState({
+    name: tech.name,
+    category: tech.category,
+    roles: tech.roles,
+    resources: tech.resources,
+    mastery: tech.mastery,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleEditTech = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${BASE_URL}/techStack/${tech.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error);
+      }
+      addTech((existingTechStack) =>
+        existingTechStack.map((t) => (t.id === tech.id ? data : t))
+      );
+      onClose();
+    } catch (error) {
+      console.error("Error updating tech:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
-      <DialogRoot>
+      <DialogRoot isOpen={isOpen} onClose={onClose}>
         <DialogTrigger asChild>
           <IconButton
+            onClick={onOpen}
             variant="ghost"
             colorPalette="gray"
-            size={"sm"}
+            size="sm"
             aria-label="Edit"
           >
             <BiEditAlt size={20} />
@@ -60,20 +102,27 @@ const EditModal = () => {
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>New Tech/Tool 🤖</DialogTitle>
+            <DialogTitle>Edit Tech/Tool 🤖</DialogTitle>
           </DialogHeader>
           <DialogBody pb={6}>
             <Fieldset.Root size="lg" maxW="md">
               <Fieldset.Content>
-                <Flex alignItems={"center"} gap={4}>
+                <Flex alignItems="center" gap={4}>
                   <Field label="Name">
-                    <Input placeholder="Python" />
+                    <Input
+                      name="name"
+                      value={inputs.name}
+                      onChange={handleChange}
+                      placeholder="Python"
+                    />
                   </Field>
-
                   <Field label="Category">
                     <NativeSelectRoot>
                       <NativeSelectField
-                        placeholder="Language"
+                        name="category"
+                        value={inputs.category}
+                        onChange={handleChange}
+                        placeholder="Select Category"
                         items={CATEGORIES}
                       />
                     </NativeSelectRoot>
@@ -81,15 +130,26 @@ const EditModal = () => {
                 </Flex>
                 <Field label="Roles">
                   <Input
+                    name="roles"
+                    value={inputs.roles}
+                    onChange={handleChange}
                     placeholder="Which roles demand this tech?"
-                    type="text"
                   />
                 </Field>
                 <Field label="Resources">
-                  <Input placeholder="Where can I learn this?" type="text" />
+                  <Input
+                    name="resources"
+                    value={inputs.resources}
+                    onChange={handleChange}
+                    placeholder="Where can I learn this?"
+                  />
                 </Field>
                 <Field label="Mastery">
-                  <RadioGroup defaultValue="1">
+                  <RadioGroup
+                    name="mastery"
+                    value={inputs.mastery}
+                    onChange={handleChange}
+                  >
                     <HStack gap="6">
                       <Radio value="Beginner">Beginner</Radio>
                       <Radio value="Intermediate">Intermediate</Radio>
@@ -102,9 +162,19 @@ const EditModal = () => {
           </DialogBody>
           <DialogFooter>
             <DialogActionTrigger asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" onClick={onClose}>
+                Cancel
+              </Button>
             </DialogActionTrigger>
-            <Button>Save</Button>
+            <DialogActionTrigger asChild>
+              <Button
+                type="submit"
+                isLoading={isLoading}
+                onClick={handleEditTech}
+              >
+                Update
+              </Button>
+            </DialogActionTrigger>
           </DialogFooter>
           <DialogCloseTrigger />
         </DialogContent>

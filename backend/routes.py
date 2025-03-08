@@ -99,7 +99,7 @@ def update_tech(id):
 
         db.session.commit()
 
-        return jsonify({"message": "Tech card updated successfully"}), 200
+        return jsonify(tech.to_json()), 200
     except Exception as e:
         db.session.rollback()
         return jsonify({"message": str(e)}), 500

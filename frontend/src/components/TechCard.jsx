@@ -14,8 +14,45 @@ import { BiTrash } from "react-icons/bi";
 import React from "react";
 import { Avatar } from "../components/ui/avatar";
 import EditModal from "./EditModal";
+import { BASE_URL } from "../App";
+import { Toaster, toaster } from "../components/ui/toaster";
 
-const TechCard = ({ tech }) => {
+const TechCard = ({ tech, addTech }) => {
+  const handleDeleteTech = async () => {
+    try {
+      const res = await fetch(BASE_URL + "/techStack/" + tech.id, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error);
+      }
+      addTech((existingTechStack) =>
+        existingTechStack.filter((t) => t.id !== tech.id)
+      );
+      // Fails to toast
+      // setTimeout(() => {
+      //   toaster.create({
+      //     id: "3",
+      //     title: "Deleted!",
+      //     description: "Tech deleted successfully",
+      //     type: "success",
+      //     duration: 2000,
+      //   });
+      // }, 100);
+    } catch (error) {
+      // setTimeout(() => {
+      //   toaster.create({
+      //     id: "3",
+      //     title: "Deleted!",
+      //     description: "Tech deleted successfully",
+      //     type: "success",
+      //     duration: 2000,
+      //   });
+      // }, 100);
+    }
+  };
+
   return (
     <Card.Root>
       <Card.Body>
@@ -30,15 +67,15 @@ const TechCard = ({ tech }) => {
             </Box>
           </Flex>
           <Flex>
-            <EditModal />
+            <EditModal addTech={addTech} tech={tech} />
             <IconButton
               variant="ghost"
               colorPalette="red"
               size={"sm"}
               aria-label="Delete"
+              onClick={handleDeleteTech}
             >
               <BiTrash size={20} />
-              {/* // onClick={handleDeleteUser} */}
             </IconButton>
           </Flex>
         </Flex>

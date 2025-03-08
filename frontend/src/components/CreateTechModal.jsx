@@ -60,7 +60,7 @@ const CreateTechModal = ({ addTech }) => {
 
     setIsLoading(true);
     try {
-      const res = await fetch("http://127.0.0.1:5000/techStack", {
+      const res = await fetch(BASE_URL + "/techStack", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,6 +72,16 @@ const CreateTechModal = ({ addTech }) => {
       if (!res.ok) {
         throw new Error(data.error);
       }
+      setTimeout(() => {
+        toaster.create({
+          id: "1",
+          title: "Hurray!",
+          description: "Tech added successfully",
+          type: "success",
+          duration: 2000,
+        });
+      }, 100);
+
       onClose();
       addTech((existingTechStack) => [...existingTechStack, data]);
       setInputs({
@@ -83,6 +93,13 @@ const CreateTechModal = ({ addTech }) => {
       }); // clear inputs
     } catch (error) {
       console.log("Payload:", JSON.stringify(inputs));
+      toaster.create({
+        id: "2",
+        title: "Error occured!",
+        description: error.message,
+        type: "error",
+        duration: 6000,
+      });
     } finally {
       setIsLoading(false);
     }
