@@ -18,8 +18,7 @@ pip-selfcheck.json
 .env
 
 # Database
-roles.db
-instance/
+techStack.db
 
 # Compiled Python files
 *.pyc
