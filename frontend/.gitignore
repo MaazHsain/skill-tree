@@ -25,6 +25,4 @@ dist-ssr
 
 public/
 assets/
-
-src/components/ui
 dummy/
