@@ -15,12 +15,12 @@ Tech Stack is a full-stack web application designed to help users manage and tra
 ---
 
 ## **Why Use Tech Stack?** 
-- 🔹 **Personal Tech Inventory:** Track technologies you've learned or want to learn.
-- 🔹 **Career Planning:** Understand which technologies are relevant to your career path.  
-- 🔹 **Learning Roadmap:** Store and access learning resources in one place.  
-- 🔹 **Progress Monitoring:** Assess your skill level in different technologies.  
-- 🔹 **Centralized Knowledge Base:** A structured repository for technologies and their use cases.
-- 🔹 **Solves a Real Pain Point:** Many fresh graduates like myself, struggle with which tech to focus on after graduating and get lost in unstructured resources.
+🔹 **Personal Tech Inventory:** Track technologies you've learned or want to learn.
+🔹 **Career Planning:** Understand which technologies are relevant to your career path.  
+🔹 **Learning Roadmap:** Store and access learning resources in one place.  
+🔹 **Progress Monitoring:** Assess your skill level in different technologies.  
+🔹 **Centralized Knowledge Base:** A structured repository for technologies and their use cases.
+🔹 **Solves a Real Pain Point:** Many fresh graduates like myself, struggle with which tech to focus on after graduating and get lost in unstructured resources.
 
 ---
 
