@@ -1,5 +1,5 @@
 # **Tech Stack - A Full-Stack Tech Management Web App**
-(In progress)
+(Not deployed)
 
 ## **Overview**  
 Tech Stack is a full-stack web application designed to help users manage and track various technologies they use or want to learn. It provides a structured way to organize and categorize technologies, track mastery levels, and link learning resources. Whether you're a developer, a tech enthusiast, or someone exploring different technologies, **Tech Stack** offers a centralized space to maintain your personal tech journey.
