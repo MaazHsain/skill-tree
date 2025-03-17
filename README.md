@@ -1,8 +1,8 @@
-# **Tech Stack - A Full-Stack Tech Management Web App**
+# **Skill Tree - A Full-Stack Tech Management Web App**
 (Not deployed)
 
 ## **Overview**  
-Tech Stack is a full-stack web application designed to help users manage and track various technologies they use or want to learn. It provides a structured way to organize and categorize technologies, track mastery levels, and link learning resources. Whether you're a developer, a tech enthusiast, or someone exploring different technologies, **Tech Stack** offers a centralized space to maintain your personal tech journey.
+Skill Tree is a full-stack web application designed to help users manage and track various technologies they use or want to learn. It provides a structured way to organize and categorize technologies, track mastery levels, and link learning resources. Whether you're a developer, a tech enthusiast, or someone exploring different technologies, **Skill Tree** offers a centralized space to maintain your personal tech journey.
 
 ## **Features**  
 ✅ **CRUD Operations:** Add, edit, delete, and view technologies.  
@@ -14,7 +14,7 @@ Tech Stack is a full-stack web application designed to help users manage and tra
 
 ---
 
-## **Why Use Tech Stack?** 
+## **Why Use Skill Tree?** 
 - 🔹 **Personal Tech Inventory:** Track technologies you've learned or want to learn.
 - 🔹 **Career Planning:** Understand which technologies are relevant to your career path.  
 - 🔹 **Learning Roadmap:** Store and access learning resources in one place.  
@@ -24,7 +24,7 @@ Tech Stack is a full-stack web application designed to help users manage and tra
 
 ---
 
-## **How Can Tech Stack Be Scaled? The big picture**  
+## **How Can Skill Tree Be Scaled? The big picture**  
 🚀 **Enhancements & Future Possibilities:**  
 - **Multi-User Collaboration:** Allow teams to share and contribute to tech stacks.
 - **Visual & Engaging**: Unlike traditional learning platforms, this can use **a skill tree visualization** to make progress clear.
@@ -35,7 +35,7 @@ Tech Stack is a full-stack web application designed to help users manage and tra
 
 ---
 
-## **Tech Stack (Technologies Used)**  
+## **Skill Tree (Technologies Used)**  
 - **Frontend:** React / Vite / Chakra UI  
 - **Backend:** Flask / SQLAlchemy
 - **Database:** SQLite   
